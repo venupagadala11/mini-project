@@ -1,0 +1,53 @@
+<div class="landingpage-heading">Fill the details to book your tickets</div>
+
+<div class="form-details">
+    <form [formGroup]="portability" (ngSubmit)="handleFormSubmit()" class="form">
+        <div class="inputs">
+            <label for="ph">User Name:</label>
+            <input type="text" id="ph" name="name" placeholder="Enter user name" formControlName="userName">
+        </div>
+        <span class="alert-red" *ngIf="userName && userName.errors?.['required'] && userName.touched">
+            Enter user name value
+            </span>
+          <span class="alert-red" *ngIf="userName && userName.errors?.['maxLength']">
+            user name must have 5 characters
+          </span>
+          <span class="alert-red" *ngIf="userName && userName.errors?.['minLength']">
+            user name should not exceed 255 characters
+          </span>
+
+
+        <div class="inputs">
+            <label for="hardness">Mobile Number</label>
+            <input type="text" id="hardness" name="mobileNumber" placeholder="Enter user name" formControlName="mobileNumber">
+        </div>
+        <span class="alert-red" *ngIf="mobileNumber && mobileNumber.errors?.['required'] && mobileNumber.touched">
+            Enter mobile number 
+          </span>
+          <span class="alert-red" *ngIf="mobileNumber && mobileNumber.errors?.['minLength'] && mobileNumber.touched">
+            mobile must be 10 digits
+          </span>
+          <span class="alert-red" *ngIf="mobileNumber && mobileNumber.errors?.['maxLength'] && mobileNumber.touched">
+            mobile number must be 10 digits
+          </span>
+
+        <div class="inputs">
+            <label for="solids">Mail ID:</label>
+            <input id="text" name="solids" placeholder="Enter your email ID" formControlName="email">
+        </div>
+        <span class="alert-red" *ngIf="email && email.errors?.['required'] && email.touched">
+            Enter solids value
+          </span>
+          <span class="alert-red" *ngIf="email && email.errors?.['pattern'] && email.touched">
+            Enter valid email id
+          </span>
+
+
+
+        
+        <div class="buttons">
+            <button type="reset" id="submit-button">Reset</button>
+            <button id="reset-button" type="submit" [disabled]="portability.invalid">Login</button>
+        </div>
+    </form>
+</div>
